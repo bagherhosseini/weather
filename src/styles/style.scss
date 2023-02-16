@@ -1,3 +1,6 @@
+$blue: #27AAE1;
+$yellow: #FFE600;
+
 body{
     background-color: black;
     color: white;
@@ -14,7 +17,6 @@ header{
 }
 
 main{
-
 
     & .cardSec{
         width: 100%;
@@ -162,7 +164,6 @@ main{
                         }
 
                         & .rain{
-                            display: none;
 
                             & .forecast__rainy__cloud--grey{
                                 border: 0px;
@@ -247,7 +248,6 @@ main{
                         }
 
                         & .snow{
-                            display: block;
 
                             & .forecast__snow__cloud--grey{
                                 border: 0px;
@@ -331,7 +331,6 @@ main{
                         }
 
                         & .suny{
-                            display: none;
 
                             & .forecast__sunny{
                                 position: relative;
@@ -374,7 +373,7 @@ main{
                         }
 
                         & .cloudy{
-                            display: none;
+
                             & .forecast__cloudy__sun{
                                 width: 180px;
                                 height: 180px;
@@ -436,6 +435,81 @@ main{
                             }
                         }
 
+                        & .storm{
+
+                            .bowie{
+                                position: absolute;
+                                top: 200px;
+                                z-index: 100;
+                                backface-visibility: hidden;
+                                border-top: 52px solid goldenrod;
+                                border-right: 16px solid transparent;
+                                border-bottom: 8px solid transparent;
+                                border-left: 25px solid goldenrod;
+                                animation: lightning 3s infinite linear;
+                                opacity: 0;
+                                
+                                transform:
+                                  skewX(-18deg)
+                                  translate3d(0, 0, 0);
+                                
+                                &:before{
+                                  content:'';
+                                  display: block;
+                                  position: absolute;
+                                  backface-visibility: hidden;
+                                  left: -8px;
+                                  top: -12px;
+                                  border-left: 28px solid goldenrod;
+                                  border-bottom: 60px solid transparent;
+                                  transform:
+                                  skewY(-16deg)
+                                  rotate(6deg)
+                                  translate3d(0, 0, 0);
+                                }
+                                
+                            }
+
+                            & .forecast__cloudy__cloud{
+                                width: 150px;
+                                height: 150px;
+                                bottom: 50%;
+                                left: 50%;
+                                transform: translate(-50%);
+                                background-color: white;
+                                position: absolute;
+                                border: none;
+                                animation: thunder 3s 1s infinite linear !important;
+                            }
+                              
+                            & .forecast__cloudy__cloud:after{
+                                content: '';
+                                display: block;
+                                width: 120px;
+                                height: 120px;
+                                background-color: white;
+                                border: none;
+                                border-radius: 50%;
+                                position: absolute;
+                                top: 30px;
+                                animation: thunder 3s 1s infinite linear !important;
+                            }
+                              
+                            & .forecast__cloudy__cloud:before{
+                                content: '';
+                                display: block;
+                                width: 100px;
+                                height: 100px;
+                                background-color: white;
+                                border: none;
+                                border-radius: 50%;
+                                position: absolute;
+                                top: 50px;
+                                animation: thunder 3s 1s infinite linear !important;
+                            }
+
+                        }
+
                     }
 
                 }
@@ -451,6 +525,44 @@ main{
     }
 }
 
+@keyframes thunder {
+    0% {
+      background-color: #fff;
+    }
+    1% {
+      background-color: #333;
+    }
+    2% {
+      background-color: #fff;
+    }
+    5% {
+      background-color: #fff;
+    }
+    6% {
+      background-color: #333;
+    }
+    12% {
+      background-color: #fff;
+    }
+}
+
+@keyframes lightning {
+    0% {
+      opacity: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    5% {
+      opacity: 0;
+    }
+    6% {
+      opacity: 1;
+    }
+    16% {
+      opacity: 0;
+    }
+  }
 
 @keyframes raining {
     0% {
