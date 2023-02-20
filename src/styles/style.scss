@@ -29,7 +29,7 @@ main{
             flex-direction: row;
             gap: 20px;
             overflow: hidden;
-            transition: all 1s linear;
+            transition: all 0.5s linear;
 
             & .top{
                 width: 100%;
@@ -216,6 +216,12 @@ main{
                     & .forecast__rainy, .forecast__snow{
                         position: relative;
                         height: fit-content;
+                    }
+
+                    & .forecast__cloudy__moon{
+                        font-size: 10em;
+                        color: #FFC82D;
+                        margin-left: 10px;
                     }
 
                     & .fog{
@@ -485,7 +491,7 @@ main{
                             border: 1px solid #F5D76A;
                             margin-left: 10px;
                         }
-                            
+
                         & .forecast__cloudy__cloud{
                             width: 150px;
                             height: 150px;
@@ -733,29 +739,29 @@ main{
 
 @keyframes moveRight {
     0% {
-      left: 100px;
+      left: 60px;
     }
     
     50% {
-      left: 80%;
+      left: 60%;
     }
     
     100% {
-      left: 100px;
+        left: 60px;
     }
 }
   
 @keyframes moveLeft {
     0% {
-      left: -70px;
+      left: -100px;
     }
     
     50% {
-      left: 0px;
+      left: -10px;
     }
     
     100% {
-        left: -70px;
+        left: -100px;
     }
 }
 
@@ -788,8 +794,94 @@ main{
 }
 
 
-@media (max-width: 1980px){
+
+@media (max-height: 1190px){
     main{
         transform: scale(0.78);
+    }
+}
+
+@media (max-height: 880px){
+    main{
+        transform: scale(0.68) !important;
+    }
+}
+
+@media (max-height: 750px){
+    main{
+        transform: scale(0.58) !important;
+    }
+}
+
+@media (max-height: 610px){
+    main{
+        transform: scale(0.50) !important;
+    }
+}
+
+@media (max-width: 600px){
+    main{
+        transform: scale(1) !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        justify-content: start !important;
+
+        & .cardSec{
+            width: 100vw !important;
+            height: 100vh !important;
+            height: fit-content !important;
+            align-items: start !important;
+
+            & .allContent{
+                max-width: none;
+                max-height: 100vh;
+                width: 100vw !important;
+
+                & .top{
+                    height: fit-content !important;
+                    height: 100vh !important;
+                    width: 100vw !important;
+                    font-size: 8px;
+                    gap: 10px !important;
+
+                    & .searchCity{
+                        
+                    }
+
+                    & .middle{
+                        margin-top: -40px;
+                        transform: scale(0.7);
+
+                        & .forecast__cloudy__moon{
+                            font-size: 20em !important;
+                            color: #FFC82D;
+                            margin-left: 10px;
+                        }
+                    }
+
+                    & .weatherInfo{
+                        margin-top: -40px;
+
+                        & .temperature-wind-drop{
+                            & .wind-drop{
+                                font-size: 1.3em;
+                                gap: 10px;
+                            }
+                        }
+                    }
+
+                    & .futureWeather{
+                        flex-direction: column !important;
+
+                       & .futureWeatherdays{
+                            padding: 10px 15px !important;
+                            width: 100%;
+                            flex-direction: row !important;
+                       }
+                    }
+                }
+            }
+        }
+        
     }
 }

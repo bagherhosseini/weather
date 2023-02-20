@@ -6,6 +6,7 @@ import Weathertoday from './Weathertoday.jsx';
 export default function Card(){
     const [weather, setWeather] = useState({});
     const [currentHour, setCurrentHour] = useState(0);
+    const [time, setTime] = useState(0);
 
     const [citydata, setCitydata] = useState();
     const [Latitude, setLatitude] = useState(0);
@@ -46,8 +47,8 @@ export default function Card(){
         if(citydata){
             cityLatitude = Latitude;
             citylongitude = longitude;
-            //https://api.open-meteo.com/v1/dwd-icon?latitude=${cityLatitude}&longitude=${citylongitude}&hourly=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&windspeed_unit=ms&timezone=Europe%2FBerlin
-            const url = `https://api.open-meteo.com/v1/dwd-icon?latitude=${cityLatitude}&longitude=${citylongitude}&hourly=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min&windspeed_unit=ms&timezone=Europe%2FBerlin`;
+            //https://api.open-meteo.com/v1/dwd-icon?latitude=${cityLatitude}&longitude=${citylongitude}&hourly=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Europe%2FBerlin
+            const url = `https://api.open-meteo.com/v1/dwd-icon?latitude=${cityLatitude}&longitude=${citylongitude}&hourly=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Europe%2FBerlin`;
             fetch(url)
             .then((res) => res.json())
             .then((data) => {
@@ -60,6 +61,7 @@ export default function Card(){
         const interval = setInterval(() => {
         const date = new Date();
         setCurrentHour(date.getHours());
+        setTime(date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
         }, 1000);
 
         return () => clearInterval(interval);
@@ -79,7 +81,10 @@ export default function Card(){
         wind = weather.hourly.windspeed_10m[currentHour];
 
         let weatherCode = weather.hourly.weathercode[currentHour];
-        Tweather =  Weathertoday(weatherCode);
+        let sunrise = weather.daily.sunrise[0];
+        let sunset =  weather.daily.sunset[0];
+
+        Tweather =  Weathertoday(weatherCode, sunrise, sunset, time);
     }
 
 

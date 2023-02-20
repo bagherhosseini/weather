@@ -1,15 +1,19 @@
-export default function Weathertoday(weatherCode){
-    
+import SunOrMoon from './SunOrMoon';
+
+export default function Weathertoday(weatherCode, sunrise, sunset, time){
+
     if(weatherCode === undefined){
         return;
     }
+
+    let sunOrMoon = SunOrMoon(sunrise, sunset, time);
 
     switch (true) {
         case (weatherCode === 0):
             return(
                 <div className='clear'>
                     <div className="forecast">
-                        <div className="forecast__sunny"></div>
+                        {sunOrMoon}
                     </div>
                 </div>
             )
@@ -20,7 +24,7 @@ export default function Weathertoday(weatherCode){
                 <div className='cloudy'>
                     <div className="forecast">
                         <div className="forecast__cloudy">
-                            <div className="forecast__cloudy__sun"></div>
+                            {sunOrMoon}
                             <div className="forecast__cloudy__cloud forecast__cloudy__cloud--small">
                             </div>
                             <div className="forecast__cloudy__cloud forecast__cloudy__cloud--normal">
