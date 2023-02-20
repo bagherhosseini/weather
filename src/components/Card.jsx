@@ -13,10 +13,12 @@ export default function Card(){
     const [city, setCity] = useState();
     const [cityName, setCityName] = useState("");
 
-
+    const [allContentheight, setAllContentheight] = useState('110px');
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setCityName(city)
+        setCityName(city);
+        setAllContentheight('1085px');
 
         try {
           const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`);
@@ -38,7 +40,6 @@ export default function Card(){
         setCity(event.target.value);
     }
 
-    
     useEffect(() => {
         let cityLatitude = 0;
         let citylongitude = 0;
@@ -84,39 +85,35 @@ export default function Card(){
 
     return(
         <section className='cardSec'>
-            <div className='allContent'>
-                <div className='card'>
-                    
-                    <div className='top'>
+            <div className='allContent' style={{height: allContentheight}}>
+                <div className='top'>
+                    <form className='searchCity' onSubmit={handleSubmit}>
+                        <label className='labelSearchBar' htmlFor="searchBar">
+                            <input className='searchBar' value={city} onChange={handleChange} id='searchBar' type="text" autoComplete="off" placeholder='Search a city' style={{ textTransform: "capitalize" }} required/>
+                            <button type="submit" className='searchBtn'><i className="fa-solid fa-magnifying-glass"></i></button>
+                        </label>
+                    </form>
 
-                        <form className='searchCity' onSubmit={handleSubmit}>
-                            <label className='labelSearchBar' htmlFor="searchBar">
-                                <input className='searchBar' value={city} onChange={handleChange} id='searchBar' type="text" autoComplete="off" placeholder='City' style={{ textTransform: "capitalize" }}/>
-                                <button type="submit" className='searchBtn'><i className="fa-solid fa-magnifying-glass"></i></button>
-                            </label>
-                        </form>
-
-                        <div className='middle'>
-                            <div className='weatherAnimation'>{Tweather}</div>
-                        </div>
-
-                        <div className='weatherInfo'>   
-                            <span className='cityContent'> <i className="fa-solid fa-location-dot"></i> {cityName} </span>
-
-                            <div className='temperature-wind-drop'>
-                                <span className='temperature'> <i className="fa-solid fa-temperature-half"></i> {temperature}</span>
-                                <div className='wind-drop'>
-                                    <span className='wind'> <i className="fa-solid fa-wind"></i> {wind}</span>
-                                    <span className='droplet'> <i className="fa-solid fa-droplet"></i> {humidity}</span>
-                                </div>
-                            </div>   
-                        </div>
-
-                        <div className='futureWeather'>
-                            {Fweather}
-                        </div>
-
+                    <div className='middle'>
+                        <div className='weatherAnimation'>{Tweather}</div>
                     </div>
+
+                    <div className='weatherInfo'>   
+                        <span className='cityContent'> <i className="fa-solid fa-location-dot"></i> {cityName} </span>
+
+                        <div className='temperature-wind-drop'>
+                            <span className='temperature'> <i className="fa-solid fa-temperature-half"></i> {temperature}</span>
+                            <div className='wind-drop'>
+                                <span className='wind'> <i className="fa-solid fa-wind"></i> {wind}</span>
+                                <span className='droplet'> <i className="fa-solid fa-droplet"></i> {humidity}</span>
+                            </div>
+                        </div>   
+                    </div>
+
+                    <div className='futureWeather'>
+                        {Fweather}
+                    </div>
+
                 </div>
             </div>
         </section>
