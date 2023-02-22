@@ -384,56 +384,56 @@ main{
                                 
                         & .forecast__snow__snow--first{
                             left: 0;
-                            animation-duration: 1s;
-                            animation-name: raining;
+                            animation-duration: 1.5s;
+                            animation-name: snowing;
                             animation-delay: 0s;
                             animation-iteration-count: infinite;
                         }
                             
                         & .forecast__snow__snow--second{
                             left: 30px;
-                            animation-duration: 1s;
-                            animation-name: raining;
+                            animation-duration: 1.5s;
+                            animation-name: snowing;
                             animation-delay: 0.4s;
                             animation-iteration-count: infinite;
                         }
                             
                         & .forecast__snow__snow--third{
                             left: 60px;
-                            animation-duration: 1s;
-                            animation-name: raining;
+                            animation-duration: 1.5s;
+                            animation-name: snowing;
                             animation-delay: 0.2s;
                             animation-iteration-count: infinite;
                         }
                             
                         & .forecast__snow__snow--fourth{
                             left: 120px;
-                            animation-duration: 1s;
-                            animation-name: raining;
+                            animation-duration: 1.5s;
+                            animation-name: snowing;
                             animation-delay: 0.4s;
                             animation-iteration-count: infinite;
                         }
 
                         & .forecast__snow__snow--five{
                             left: 180px;
-                            animation-duration: 1s;
-                            animation-name: raining;
+                            animation-duration: 1.5s;
+                            animation-name: snowing;
                             animation-delay: 0s;
                             animation-iteration-count: infinite;
                         }
 
                         & .forecast__snow__snow--six{
                             left: 200px;
-                            animation-duration: 1s;
-                            animation-name: raining;
+                            animation-duration: 1.5s;
+                            animation-name: snowing;
                             animation-delay: 0.2s;
                             animation-iteration-count: infinite;
                         }
 
                         & .forecast__snow__snow--seven{
                             left: 240px;
-                            animation-duration: 1s;
-                            animation-name: raining;
+                            animation-duration: 1.5s;
+                            animation-name: snowing;
                             animation-delay: 0.6s;
                             animation-iteration-count: infinite;
                         }
@@ -441,11 +441,11 @@ main{
 
                     & .clear{
 
-                        & .forecast__sunny{
+                        & .forecast__cloudy__sun{
                             position: relative;
                         }
 
-                        & .forecast__sunny::before{
+                        & .forecast__cloudy__sun::before{
                             content: '';
                             display: block;
                             width: 250px;
@@ -453,12 +453,12 @@ main{
                             background: #fdf6c6;
                             border: 1px solid #faeb7c;
                             border-radius: 50%;
-                            animation-duration: 1.6s;
+                            animation-duration: 2.6s;
                             animation-name: fadeIn;
                             animation-iteration-count: infinite;
                         }
-                            
-                        & .forecast__sunny::after{
+
+                        & .forecast__cloudy__sun::after{
                             width: 180px;
                             height: 180px;
                             background: #faeb7c;
@@ -469,15 +469,6 @@ main{
                             top: 35px;
                             left: 35px;
                             border: 1px solid #F5D76A;
-                        }
-                            
-                        & .forecast__cloudy__sun{
-                            width: 40px;
-                            height: 40px;
-                            background: #faeb7c;
-                            border-radius: 50%;
-                            border: 1px solid #F5D76A;
-                            margin-left: 10px;
                         }
                     }
 
@@ -715,10 +706,51 @@ main{
 
 @keyframes raining {
     0% {
-      top: 100px;
+      top: 200px;
     }
+
+    40%{
+        top: 390px;
+    }
+
+    60%{
+        top: 370px;
+        margin-left: 20px;
+    }
+
+    70%{
+        opacity: .6;
+    }
+
+    80%{
+        opacity: .3;
+    }
+
     100% {
-      top: 500px;
+        
+        margin-left: 20px;
+        top: 500px;
+        opacity: 0;
+    }
+}
+
+@keyframes snowing {
+    0% {
+      top: 200px;
+    }
+
+    70%{
+        opacity: .6;
+    }
+
+    80%{
+        opacity: .3;
+    }
+
+    100% {
+        margin-left: 20px;
+        top: 500px;
+        opacity: 0;
     }
 }
 
